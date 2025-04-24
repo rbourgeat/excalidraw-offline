@@ -1,6 +1,8 @@
-# Self-Hosted excalidraw
+# Self-Hosted Excalidraw (Fork from [Someone0nEarth/excalidraw-self-hosted](https://github.com/Someone0nEarth/excalidraw-self-hosted))
 
-The goal is a docker-compose configuration for a fully self-hosted [Excalidraw](https://github.com/excalidraw/excalidraw) with collaboration support. The configuration is for a [traefik](https://github.com/traefik/traefik) setup and uses a [MongoDB](https://github.com/mongodb/mongo) for the storage. Also includes [mongo-express](https://github.com/mongo-express/mongo-express) as a MongoDB admin interface.
+This is a **fork** of [Someone0nEarth/excalidraw-self-hosted](https://github.com/Someone0nEarth/excalidraw-self-hosted) with added functionality for easier export and loading of Docker images, as well as a few tweaks and improvements.
+
+The goal of this project is to provide a fully self-hosted version of [Excalidraw](https://github.com/excalidraw/excalidraw) with collaboration support. It uses Docker Compose, Traefik for routing, MongoDB for storage, and Mongo Express for managing MongoDB.
 
 The original version of excalidraw only supporting Firebase for the storage. For achieving a self-hosted storage, a modified version of excalidraw is used:
 
@@ -12,32 +14,20 @@ In combination with a http-storage:
 
 ## Prerequisites
 
-- Docker / Docker Compose
-- A traefik setup with a configured https entrypoint
+- Docker
 
 ## Deploy
 
-Clone this repository: `git clone git@github.com:Someone0nEarth/excalidraw-self-hosted.git`
+Clone this repository.
 
-Create a copy of the env-example: `cp .env-example .env` and modifying the `.env` with your values.
+```bash
+bash export.sh
+```
 
-Pull the images and start the containers: `docker-compose up -d`
+Move the folder of the project where you want, then:
 
-## Usage
-
-Open the excalidraw app in your browser with the host you configured for `APP_HOST`, for example: `https://excalidraw.your-domain.net`
-
-The mongo-express can be reached under the host you configured for `MONGOEXPRESS_HOST`, for example: `https://excalidraw-db.your-domain.net`
-
-## Current Limitations
-
-The "Export" function to the [Excalidraw+ workspace](https://plus.excalidraw.com/) is not working/supported. Also there is no solution for self-hosting your own workspace yet.
-
-## Other Self-Hosted Solutions/Attemps
-
-- <https://github.com/alswl/excalidraw-collaboration> (although providing a docker-compose example for a nginx setup)
-- <https://github.com/cocreators-ee/excalidraw-alternative-store>
-
-Have fun,
-
-someone.earth
+```bash
+cp .env.example .env
+bash load.sh
+docker compose up -d
+```
